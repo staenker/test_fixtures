@@ -24,6 +24,10 @@ spec
 ```
 
 ```ruby
+require 'test_fixtures'
+
+...
+
 it 'will provide you with the projects root directory' do
     project_root_directory = TestFixtures.project_root_directory(__FILE__)
     project_root_directory.should eql Pathname.new(__FILE__).parent.parent.to_path
@@ -44,6 +48,10 @@ spec
 └── use_cases_spec.rb
 ```
 ```ruby
+require 'test_fixtures'
+
+...
+
 it 'will provide you with a spec specific fixture directory' do
     fixture_directory = TestFixtures.fixture_dir(__FILE__)
     fixture_directory_by_convention = File.join(File.dirname(__FILE__), 'use_cases_spec-fixture')
@@ -72,6 +80,10 @@ spec
 └── use_cases_spec.rb
 ```
 ```ruby
+require 'test_fixtures'
+
+...
+
 it 'will provide you with a spec specific fixtures directory' do
     fixture_directory = TestFixtures.fixture_dir(__FILE__, 'fixture_a')
     fixture_directory_by_convention = File.join(File.dirname(__FILE__), 'use_cases_spec-fixtures', 'fixture_a')
