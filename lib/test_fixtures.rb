@@ -2,10 +2,7 @@ require 'test_fixtures/version'
 require 'test_fixtures/directory'
 require 'test_fixtures/project_directory'
 
-#noinspection RubyClassVariableUsageInspection
 module TestFixtures
-  @@project_directory = ProjectDirectory.new(%w(test spec), %w(bin lib app db config))
-
   def self.fixture_dir(test_file, fixture_name=nil)
     directory_instance(test_file).from_test_file(test_file, fixture_name)
   end
@@ -15,7 +12,7 @@ module TestFixtures
   end
 
   def self.project_root_directory(test_file)
-    @@project_directory.guess(test_file)
+    guess_project_directory(test_file)
   end
 
   def self.project_tmp_directory(test_file)
@@ -26,13 +23,13 @@ module TestFixtures
     tmp
   end
 
-  def self.project_directory=(project_directory)
-    @@project_directory = project_directory
-  end
-
   private
   def self.directory_instance(test_file)
-    project_directory_guess = @@project_directory.guess(test_file)
+    project_directory_guess = guess_project_directory(test_file)
     Directory.new(project_directory_guess)
+  end
+
+  def self.guess_project_directory(test_file)
+    ProjectDirectory.new(%w(test spec), %w(bin lib app db config)).guess(test_file)
   end
 end
