@@ -18,7 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-
+Given the following file system tree relative you your projects root directory
+    spec
+    ├── use_cases_spec-fixture
+    │   ├── hello.txt
+    │   └── world.txt
+    ├── use_cases_spec-fixtures
+    │   └── fixture_a
+    │       ├── are.txt
+    │       └── you.txt
+    └── use_cases_spec.rb
 
 ## Contributing
 
